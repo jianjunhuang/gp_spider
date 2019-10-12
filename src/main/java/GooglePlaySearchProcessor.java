@@ -49,11 +49,10 @@ public class GooglePlaySearchProcessor implements PageProcessor {
         }
         List<WebElement> elements = webDriver.findElements(By.xpath("//a[contains(@class,'poRVub')]"));
         logger.info("Element size = " + elements.size());
-//        for (WebElement element : elements) {
-//            logger.debug(element.getAttribute("href"));
-//        }
-//        List<String> urls = page.getHtml().xpath("//a[contains(@class,'poRVub')]/@href").all();
-//        logger.info("size = " + urls.size());
+        //reset
+        for (String key : target.keySet()) {
+            target.put(key, -1);
+        }
         for (int i = 0; i < elements.size(); i++) {
             String url = elements.get(i).getAttribute("href");
             String pkg = url.substring(url.indexOf("=") + 1);
